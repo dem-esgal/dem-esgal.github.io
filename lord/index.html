@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href='./src/assets/styles/style.css' rel='stylesheet' type='text/css'>
+    <style>
+      @font-face {
+        font-family: "BloggerSans";
+        src: url("./src/assets/fonts/BloggerSans.eot");
+        src: url("./src/assets/fonts/BloggerSans.woff") format("woff"), url("./src/assets/fonts/BloggerSans.ttf") format("truetype");
+        font-style: normal;
+        font-weight: 300;
+      }
+
+      .select-label {
+        width: 150px;
+        text-align: right;
+      }
+
+      .mobile-small .select-label {
+        width: 100px;
+      }
+
+      .ant-button {
+        width: 200px;
+        font-family: BloggerSans, sans-serif;
+        line-height: 1.5715;
+        position: relative;
+        display: inline-block;
+        font-weight: 400;
+        white-space: nowrap;
+        text-align: center;
+        background-image: none;
+        border: 3px solid transparent;
+        box-shadow: 0 2px #00000004;
+        cursor: pointer;
+        transition: all .3s cubic-bezier(.645,.045,.355,1);
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        touch-action: manipulation;
+        height: 60px;
+        padding: 4px 15px;
+        font-size: 28px;
+        color: #ffffff;
+        border-radius: 5px;
+        border-color: #d9d9d9;
+        background: #644526;
+      }
+
+      .mobile .ant-button {
+        font-size: 20px;
+        height: 44px;
+      }
+
+      .mobile-small .ant-button {
+        font-size: 16px;
+        height: 36px;
+        width: 120px;
+      }
+
+      .ant-button:hover{
+        text-decoration: none;
+        background: #886546;
+      }
+
+      .ant-col-24 {
+        display: block;
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+
+      .ant-row {
+        display: flex;
+        flex-flow: row wrap;
+        padding: 10px;
+      }
+
+      .mobile .ant-row {
+        padding: 6px;
+      }
+
+      .mobile-small .ant-row {
+        padding: 5px;
+      }
+
+      .ant-row pre {
+        font-family: BloggerSans, sans-serif;
+        line-height: 1.5715;
+        display: block;
+        font-weight: 400;
+        padding: 4px 15px;
+        font-size: 28px;
+        color: #ffffff;
+      }
+
+      .ant-row span {
+        font-family: BloggerSans, sans-serif;
+        line-height: 1.5715;
+        display: inline-block;
+        font-weight: 400;
+        padding: 4px 15px;
+        font-size: 28px;
+        color: #ffffff;
+      }
+
+      .mobile .ant-row span {
+        font-size: 20px;
+        padding: 3px 10px;
+      }
+
+      .mobile-small .ant-row span {
+        font-size: 16px;
+        padding: 2px 5px;
+      }
+
+      .select-css {
+        max-width: 150px;
+        display: inline-block;;
+        font-size: 16px;
+        font-family: sans-serif;
+        font-weight: 700;
+        color: #444;
+        line-height: 1.3;
+        padding: .6em 1.4em .5em .8em; width: 100%;
+        box-sizing: border-box;
+        margin: 0;
+        border: 1px solid #aaa;
+        box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+        border-radius: .5em;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        appearance: none;
+        background-color: #644526;
+        background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'), linear-gradient(to bottom, #ffffff 0%,#644526 100%);
+        background-repeat: no-repeat, repeat;
+        background-position: right .7em top 50%, 0 0;
+        background-size: .65em auto, 100%;
+      }
+      .select-css::-ms-expand { display: none; }
+      .select-css:hover { border-color: #888; }
+      .select-css:focus { border-color: #aaa;
+        box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+        box-shadow: 0 0 0 3px -moz-mac-focusring;
+        color: #222;
+        outline: none;
+      }
+      .select-css option { font-weight:normal; }
+      *[dir="rtl"] .select-css, :root:lang(ar) .select-css, :root:lang(iw) .select-css {
+        background-position: left .7em top 50%, 0 0;
+        padding: .6em .8em .5em 1.4em;
+      }
+
+      .mobile-small .select-css {
+        padding: .3em .4em .1em .4em;
+      }
+
+      canvas {
+        padding-top: 0!important;
+        margin-top: 0!important;
+        padding-bottom: 0!important;
+        margin-bottom: 0!important;
+        border: none !important;
+      }
+
+      #fire_container {
+        position: absolute;
+        bottom: 79%;
+        left: 10px;
+        right: 10px;
+      }
+
+      .mobile #fire_container {
+        bottom: 85%;
+      }
+
+      .mobile-small #fire_container {
+        bottom: 85%;
+      }
+
+      #rules_text  {
+        word-break: break-word;
+        width: 835px;
+        color: #ffe7c1;
+        padding-left: 40px;
+        text-align: left;
+        font-size: 24px;
+        text-shadow: 1px 3px 2px black;
+      }
+
+      .mobile #rules_text {
+        font-size: 20px;
+        width: 300px;
+      }
+
+      .mobile-small #rules_text {
+        font-size: 16px;
+        width: 350px;
+        padding-left: 20px;
+        margin-top: -10px;
+      }
+
+      .container-div {
+        width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        text-align: center;
+      }
+
+      .mobile .container-div {
+        width: 800px;
+      }
+
+      .mobile-small .container-div {
+        width: 600px;
+      }
+
+      #game_support {
+        font-size: 14px;
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+        color: #ffffff
+      }
+
+      .mobile #game_support {
+        bottom: 10px;
+        right: 5px;
+        width: 200px;
+        word-break: break-word;
+      }
+
+      .mobile-small #game_support {
+        font-size: 13px;
+        bottom: 5px;
+        right: 2px;
+        width: 180px;
+        word-break: break-word;
+        text-align: right;
+      }
+
+      .fire.left {
+        left: 211px;
+      }
+
+      .fire.right {
+        right: 204px;
+      }
+
+      .mobile .fire.left {
+        left: 133px;
+      }
+
+      .mobile .fire.right {
+        right: 124px;
+      }
+
+      .mobile-small .fire.left {
+        left: 101px;
+      }
+
+      .mobile-small .fire.right {
+        right: 98px;
+      }
+
+      #main_menu {
+        position: absolute;
+        top: 20%;
+        left: 10px;
+        right: 10px;
+      }
+
+      .mobile-small #main_menu {
+        top: 5%;
+        left: 10px;
+        right: 10px;
+      }
+
+      #back_button, #menu_open, #forward_button {
+        width: 250px;
+      }
+
+      .mobile #back_button, .mobile #menu_open, .mobile #forward_button {
+        width: 200px;
+      }
+
+      .mobile-small #back_button, .mobile-small #menu_open, .mobile-small #forward_button {
+        width: 150px;
+      }
+    </style>
+    <script src="https://yandex.ru/games/sdk/v2"></script>
+  </head>
+  <body id="body" bgcolor="#0c0c0c" style="position: relative; padding-top: 0; margin-top: 0;">
+  <div id="game_support"><span>Поддержка:</span> <span style="display: inline-block">lord-games-help@yandex.ru</span></div>
+    <div id="fire_container" style="display: none;">
+      <div class="container-div">
+        <div class="fire left">
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+        </div>
+
+        <div class="fire right">
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="main_menu" style="display: none;">
+      <div class="container-div">
+        <div class="ant-row">
+          <div class="ant-col-24">
+            <button id="rules_open" class="ant-button">Правила</button>
+          </div>
+        </div>
+
+        <div class="ant-row">
+          <div class="ant-col-24">
+            <span class="select-label">Противников</span>
+            <select id="enemy_count" class="select-css">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="ant-row">
+          <div class="ant-col-24">
+            <span class="select-label">Карта</span>
+            <select id="map_size" class="select-css">
+              <option value="0">Очень маленькая</option>
+              <option value="1">Маленькая</option>
+              <option value="2">Средняя</option>
+              <option value="3">Большая</option>
+              <option value="4">Очень большая</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="ant-row">
+          <div class="ant-col-24">
+            <span class="select-label">Сложность</span>
+            <select id="ai_power" class="select-css">
+              <option value="0">Слабый</option>
+              <option value="1">Средний</option>
+              <option value="2">Сильный</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="ant-row">
+          <div class="ant-col-24">
+            <button id="change_music" class="ant-button">Выкл музыку</button>
+            <span style="height: 20px; width: 20px;padding: 0;"></span>
+            <button id="start_game" class="ant-button" style="width: 120px;">Играть</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="rules_menu" style="position: absolute; top: 20px; left: 20px; right:20px; display: none;text-align: center">
+      <div class="container-div">
+        <div class="ant-row" style="height: 30px">
+          <div class="ant-col-24">
+            <button id="back_button" class="ant-button" style="position: absolute; top: 0; left: 50px">Назад</button>
+            <button id="menu_open" class="ant-button" style="position: absolute; top: 0; left: 37%;">В меню</button>
+            <button id="forward_button" class="ant-button" style="position: absolute; top: 0; right: 50px">Вперёд</button>
+          </div>
+        </div>
+        <div class="ant-row" style="text-align: left; padding-top: 25px;">
+          <div class="ant-col-24">
+            <span id="rules_text">Правила</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  <script type="text/javascript" src="bundle.min.js"></script></body>
+</html>
