@@ -294,11 +294,12 @@
   <body id="body" bgcolor="#0c0c0c" style="position: relative; padding-top: 0; margin-top: 0;height:800px">
   <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
   <script>
-	  // Sends event to client
-	  vkBridge.send('VKWebAppInit');
+    // Sends event to client
+    vkBridge.send('VKWebAppInit');
   </script>
-
-  <div id="game_support"><span>Поддержка:</span> <span style="display: inline-block">lord-games-help@yandex.ru</span></div>
+  <div id="game_support">
+    <div id="share">Поделится с друзьями</div>
+    <span>Поддержка:</span> <span style="display: inline-block">lord-games-help@yandex.ru</span></div>
     <div id="fire_container" style="display: none;">
       <div class="container-div">
         <div class="fire left">
@@ -482,6 +483,5 @@
         </div>
       </div>
     </div>
-  <script type="text/javascript" src="bundle.min.js" defer></script>
-  </body>
+  <script type="text/javascript" src="bundle.min.js"></script></body>
 </html>
